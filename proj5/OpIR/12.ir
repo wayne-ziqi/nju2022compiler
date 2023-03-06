@@ -1,0 +1,68 @@
+FUNCTION main :
+DEC v1 40
+v2 := &v1
+DEC v3 40
+v4 := &v3
+READ v5
+READ v7
+READ v9
+READ v11
+READ v13
+v15 := #0
+v62 := v5 + v9
+v63 := v7 * v11
+v64 := v63 - v62
+v65 := v64 - v5
+v66 := v65 + v13
+v8 := v66
+v67 := v13 - v5
+v68 := v64 * v5
+v69 := v64 / v68
+v72 := #3 - v11
+v32 := v72
+v73 := v69 / v67
+v34 := v73
+v75 := v5 - v11
+v78 := v69 + v75
+v43 := v78
+LABEL L1 :
+IF v15 >= #10 GOTO L3
+LABEL L2 :
+v79 := v15 + #1
+v15 := v79
+v80 := v79 * #4
+v81 := v2 + v80
+v82 := v8 + #1
+*v81 := v82
+v83 := v32 + v34
+v8 := v83
+v49 := #10
+LABEL L4 :
+IF v49 <= #0 GOTO L6
+LABEL L5 :
+v84 := v49 - #1
+v49 := v84
+v85 := v84 * #4
+v86 := v4 + v85
+v87 := v2 + v80
+v55 := *v87
+v88 := v43 + v55
+*v86 := v88
+GOTO L4
+LABEL L6 :
+GOTO L1
+LABEL L3 :
+LABEL L7 :
+IF v15 <= #0 GOTO L9
+LABEL L8 :
+v90 := v15 - #1
+v15 := v90
+v80 := v90 * #4
+v91 := v4 + v80
+v61 := *v91
+WRITE v61
+GOTO L7
+LABEL L9 :
+WRITE v43
+RETURN #0
+

@@ -1,0 +1,107 @@
+
+FUNCTION quick_sort :
+PARAM v_arr
+PARAM v_left
+PARAM v_right
+v_i := v_left
+v_j := v_right
+t1 := v_left * #4
+t2 := v_arr + t1
+t0 := *t2
+v_pivot := t0
+IF v_i < v_j GOTO label0
+RETURN #0
+LABEL label0 :
+LABEL label1 :
+IF v_i >= v_j GOTO label2
+LABEL label3 :
+IF v_i >= v_j GOTO label4
+t4 := v_j * #4
+t5 := v_arr + t4
+t3 := *t5
+IF t3 <= v_pivot GOTO label4
+t6 := v_j - #1
+v_j := t6
+GOTO label3
+LABEL label4 :
+IF v_i >= v_j GOTO label5
+t8 := v_j * #4
+t9 := v_arr + t8
+t7 := *t9
+t10 := v_i * #4
+t11 := v_arr + t10
+*t11 := t7
+t12 := v_i + #1
+v_i := t12
+LABEL label5 :
+LABEL label6 :
+IF v_i >= v_j GOTO label7
+t14 := v_i * #4
+t15 := v_arr + t14
+t13 := *t15
+IF t13 >= v_pivot GOTO label7
+t16 := v_i + #1
+v_i := t16
+GOTO label6
+LABEL label7 :
+IF v_i >= v_j GOTO label8
+t18 := v_i * #4
+t19 := v_arr + t18
+t17 := *t19
+t20 := v_j * #4
+t21 := v_arr + t20
+*t21 := t17
+t22 := v_j - #1
+v_j := t22
+LABEL label8 :
+GOTO label1
+LABEL label2 :
+t23 := v_pivot
+t24 := v_i * #4
+t25 := v_arr + t24
+*t25 := t23
+t27 := v_i - #1
+ARG t27
+ARG v_left
+ARG v_arr
+t26 := CALL quick_sort
+t29 := v_i + #1
+ARG v_right
+ARG t29
+ARG v_arr
+t28 := CALL quick_sort
+RETURN #0
+
+FUNCTION main :
+v_len := #6
+DEC v_a 24
+v_cnt := #0
+v_sum := #0
+LABEL label9 :
+IF v_cnt >= v_len GOTO label10
+READ t30
+t31 := v_cnt * #4
+t32 := &v_a + t31
+*t32 := t30
+t33 := v_cnt + #1
+v_cnt := t33
+GOTO label9
+LABEL label10 :
+t35 := v_len - #1
+ARG t35
+ARG #0
+ARG &v_a
+t34 := CALL quick_sort
+v_cnt := #0
+LABEL label11 :
+IF v_cnt >= v_len GOTO label12
+t38 := v_cnt * #4
+t39 := &v_a + t38
+t37 := *t39
+WRITE t37
+t36 := #0
+t40 := v_cnt + #1
+v_cnt := t40
+GOTO label11
+LABEL label12 :
+RETURN #0

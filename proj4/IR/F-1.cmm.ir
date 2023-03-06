@@ -1,0 +1,94 @@
+
+FUNCTION mod :
+PARAM v_number2
+PARAM v_m2
+t1 := v_number2 / v_m2
+t0 := t1 * v_m2
+v_result := v_number2 - t0
+v_result2 := v_result
+RETURN v_result
+
+FUNCTION power :
+PARAM v_base1
+PARAM v_p1
+t2 := #1 + v_p1
+v_ret1 := t2 - v_p1
+LABEL label0 :
+t7 := v_ret1 - v_ret1
+t6 := t7 + #90
+t5 := t6 - #89
+t4 := t5 + #1
+t3 := t4 - #2
+IF v_p1 <= t3 GOTO label1
+v_ret1 := v_ret1 * v_base1
+t10 := #2 * #1
+t9 := t10 * v_p1
+t11 := #1 * v_p1
+t8 := t9 - t11
+v_p1 := t8 - #1
+GOTO label0
+LABEL label1 :
+RETURN v_ret1
+
+FUNCTION getNumDigits :
+PARAM v_number3
+v_ret3 := #0
+IF v_number3 >= #0 GOTO label2
+t13 := #1
+t12 := #0 - t13
+RETURN t12
+LABEL label2 :
+LABEL label3 :
+IF v_number3 <= #0 GOTO label4
+v_number3 := v_number3 / #10
+v_ret3 := v_ret3 + #2
+v_ret3 := v_ret3 + #2
+v_ret3 := v_ret3 - #3
+GOTO label3
+LABEL label4 :
+RETURN v_ret3
+
+FUNCTION isNarcissistic :
+PARAM v_number4
+t15 := #1 + v_number4
+t14 := t15 - #1
+ARG t14
+v_numDigits4 := CALL getNumDigits
+v_sum4 := #0
+v_n4 := v_number4
+LABEL label5 :
+IF v_n4 <= #0 GOTO label6
+ARG #10
+ARG v_n4
+v_s4 := CALL mod
+t16 := v_n4 - v_s4
+v_n4 := t16 / #10
+ARG v_numDigits4
+ARG v_s4
+t17 := CALL power
+v_sum4 := v_sum4 + t17
+GOTO label5
+LABEL label6 :
+IF v_sum4 != v_number4 GOTO label7
+RETURN #1
+GOTO label8
+LABEL label7 :
+RETURN #0
+LABEL label8 :
+
+FUNCTION main :
+v_count := #0
+v_i := #300
+LABEL label9 :
+IF v_i >= #500 GOTO label10
+ARG v_i
+t18 := CALL isNarcissistic
+IF t18 != #1 GOTO label11
+WRITE v_i
+v_count := v_count + #1
+LABEL label11 :
+v_i := v_i + #1
+GOTO label9
+LABEL label10 :
+WRITE v_count
+RETURN #0

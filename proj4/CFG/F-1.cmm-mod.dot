@@ -1,0 +1,17 @@
+digraph G {
+	node [shape=box,color=".3 .2 1.0",style=filled];
+	"B0" [label="B0
+ENTRY"]
+	"B1" [label="B1
+Exit"]
+	"B2" [label="B2
+PARAM v_number2 
+PARAM v_m2 
+t1 := v_number2 / v_m2 
+t0 := t1 * v_m2 
+v_result := v_number2 - t0 
+v_result2 := v_result 
+RETURN v_result"]
+	B0 -> B2 [label="FALL"]
+	B2 -> B1 [label="FALL"]
+}

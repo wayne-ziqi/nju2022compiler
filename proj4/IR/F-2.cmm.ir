@@ -1,0 +1,119 @@
+
+FUNCTION changeCal :
+PARAM v_r1
+t4 := v_r1 + #345
+t3 := t4 - #345
+t5 := v_r1 * v_r2
+t2 := t3 + t5
+t6 := v_r1 * v_r2
+t1 := t2 - t6
+t7 := v_r1 * v_r1
+t0 := t1 + t7
+t8 := v_r1 * v_r1
+v_r2 := t0 - t8
+t13 := v_r2 * #2
+t14 := v_r2 * #3
+t12 := t13 - t14
+t15 := v_r2 * #2
+t11 := t12 + t15
+t16 := #34 / #2
+t10 := t11 + t16
+t17 := #10 / #3
+t9 := t10 + t17
+t18 := #20 / #1
+v_r2 := t9 - t18
+t19 := #7 + #6
+t20 := #11 * #1
+v_r2 := t19 - t20
+t23 := #4 * #5
+t22 := v_r1 + t23
+t24 := #10 * #2
+t21 := t22 - t24
+t25 := #5 / #6
+v_r2 := t21 - t25
+RETURN v_r2
+
+FUNCTION main :
+t26 := #7 + #6
+t27 := #11 * #1
+v_a := t26 - t27
+v_b := #8 - #4
+t29 := #4 + #4
+t31 := #5 * #6
+t30 := t31 / #3
+t28 := t29 + t30
+v_c := t28 - #4
+t32 := v_a + v_b
+v_d := t32 - v_c
+t33 := v_a + v_b
+t34 := v_c * #2
+v_e := t33 + t34
+t35 := v_a + v_b
+v_f := t35 + v_c
+v_g1 := #42
+v_i := #0
+t39 := v_a + v_b
+t38 := t39 + v_c
+t37 := t38 - v_d
+t36 := t37 - v_e
+v_f := t36 + v_f
+LABEL label0 :
+t40 := v_b - v_a
+IF t40 >= v_f GOTO label1
+t44 := v_i * #4
+t43 := v_g1 + t44
+t42 := t43 + #3
+t41 := t42 + #4
+v_g1 := t41 + #5
+ARG v_b
+t48 := CALL changeCal
+t47 := v_f - t48
+t49 := v_a * #2
+t46 := t47 + t49
+t50 := v_c * v_d
+t45 := t46 + t50
+v_g := t45 - v_f
+t51 := v_i + #1
+v_i := t51 + #0
+t52 := v_i + #3
+v_i := t52 + #1
+t53 := v_i - #2
+v_i := t53 - #2
+t56 := v_i / #3
+t55 := t56 * #3
+t54 := v_i - t55
+ARG v_a
+t62 := CALL changeCal
+t61 := v_a - t62
+t60 := t61 + v_b
+t59 := t60 - v_b
+t58 := t59 + v_c
+t57 := t58 - v_c
+IF t54 != t57 GOTO label2
+t63 := v_f + #1
+v_f := t63 + #1
+LABEL label2 :
+t64 := v_f - #2
+v_f := t64 + #1
+GOTO label0
+LABEL label1 :
+t65 := v_g1 - #2
+v_h := t65 + #3
+WRITE v_h
+v_i := v_g1
+LABEL label3 :
+t66 := #1200 + #22
+IF v_g1 < t66 GOTO label4
+v_i := v_g1 + #1024
+ARG v_g1
+t67 := CALL changeCal
+v_g1 := t67 - #1
+v_i := v_g1
+GOTO label3
+LABEL label4 :
+WRITE v_g1
+v_a := v_a + v_b
+v_b := v_a + v_b
+v_c := v_a + v_b
+WRITE v_c
+RETURN #0

@@ -1,0 +1,63 @@
+
+FUNCTION main :
+v_len := #5
+DEC v_mat1 100
+DEC v_mat2 100
+v_o_cnt := #0
+v_i_cnt := #0
+v_m_res := #0
+LABEL label0 :
+IF v_o_cnt >= v_len GOTO label1
+v_i_cnt := #0
+LABEL label2 :
+IF v_i_cnt >= v_len GOTO label3
+t0 := v_i_cnt
+t1 := v_o_cnt * #20
+t2 := &v_mat1 + t1
+t3 := v_i_cnt * #4
+t4 := t2 + t3
+*t4 := t0
+t5 := v_o_cnt
+t6 := v_o_cnt * #20
+t7 := &v_mat2 + t6
+t8 := v_i_cnt * #4
+t9 := t7 + t8
+*t9 := t5
+t10 := v_i_cnt + #1
+v_i_cnt := t10
+GOTO label2
+LABEL label3 :
+t11 := v_o_cnt + #1
+v_o_cnt := t11
+GOTO label0
+LABEL label1 :
+v_o_cnt := #0
+LABEL label4 :
+IF v_o_cnt >= v_len GOTO label5
+v_i_cnt := #0
+LABEL label6 :
+IF v_i_cnt >= v_len GOTO label7
+t15 := v_o_cnt * #20
+t16 := &v_mat1 + t15
+t17 := v_i_cnt * #4
+t18 := t16 + t17
+t14 := *t18
+t20 := v_o_cnt * #20
+t21 := &v_mat2 + t20
+t22 := v_i_cnt * #4
+t23 := t21 + t22
+t19 := *t23
+t13 := t14 * t19
+t12 := v_m_res + t13
+v_m_res := t12
+t24 := v_i_cnt + #1
+v_i_cnt := t24
+GOTO label6
+LABEL label7 :
+t25 := v_o_cnt + #1
+v_o_cnt := t25
+GOTO label4
+LABEL label5 :
+WRITE v_m_res
+t26 := #0
+RETURN #0

@@ -1,0 +1,38 @@
+digraph G {
+	node [shape=box,color=".3 .2 1.0",style=filled];
+	"B0" [label="B0
+ENTRY"]
+	"B6" [label="B6
+v_number3 := v_number3 / #10 
+v_ret3 := v_ret3 + #2 
+v_ret3 := v_ret3 + #2 
+v_ret3 := v_ret3 - #3 
+GOTO label3"]
+	"B3" [label="B3
+t13 := #1 
+t12 := #0 - t13 
+RETURN t12"]
+	"B4" [label="B4
+LABEL label2 :"]
+	"B1" [label="B1
+Exit"]
+	"B5" [label="B5
+LABEL label3 : 
+IF v_number3 <= #0 GOTO label4"]
+	"B2" [label="B2
+PARAM v_number3 
+v_ret3 := #0 
+IF v_number3 >= #0 GOTO label2"]
+	"B7" [label="B7
+LABEL label4 : 
+RETURN v_ret3"]
+	B0 -> B2 [label="FALL"]
+	B6 -> B5 [label="GOTO"]
+	B3 -> B1 [label="FALL"]
+	B4 -> B5 [label="FALL"]
+	B5 -> B7 [label="IF_TRUE"]
+	B5 -> B6 [label="IF_FALSE"]
+	B2 -> B4 [label="IF_TRUE"]
+	B2 -> B3 [label="IF_FALSE"]
+	B7 -> B1 [label="FALL"]
+}

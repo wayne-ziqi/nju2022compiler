@@ -1,0 +1,78 @@
+
+FUNCTION get_max :
+PARAM v_max_arr
+v_max_idx := #0
+v_max_val := *v_max_arr
+v_max_len := #4
+v_max_cnt := #0
+LABEL label0 :
+IF v_max_cnt >= v_max_len GOTO label1
+t2 := v_max_cnt * #4
+t3 := v_max_arr + t2
+t1 := *t3
+IF t1 <= v_max_val GOTO label2
+v_max_idx := v_max_cnt
+t5 := v_max_cnt * #4
+t6 := v_max_arr + t5
+t4 := *t6
+v_max_val := t4
+LABEL label2 :
+t7 := v_max_cnt + #1
+v_max_cnt := t7
+GOTO label0
+LABEL label1 :
+RETURN v_max_idx
+
+FUNCTION mod :
+PARAM v_m1
+PARAM v_m2
+t10 := v_m1 / v_m2
+t9 := t10 * v_m2
+t8 := v_m1 - t9
+RETURN t8
+
+FUNCTION main :
+v_len := #4
+DEC v_val_arr 64
+DEC v_res_arr 16
+DEC v_copy_arr 8
+v_o_cnt := #0
+v_i_cnt := #0
+v_o_cnt := #0
+LABEL label3 :
+IF v_o_cnt >= v_len GOTO label4
+v_i_cnt := #0
+LABEL label5 :
+IF v_i_cnt >= v_len GOTO label6
+t12 := v_o_cnt + v_i_cnt
+ARG v_len
+ARG t12
+t11 := CALL mod
+t13 := v_o_cnt * #16
+t14 := &v_val_arr + t13
+t15 := v_i_cnt * #4
+t16 := t14 + t15
+*t16 := t11
+t17 := v_i_cnt + #1
+v_i_cnt := t17
+GOTO label5
+LABEL label6 :
+t20 := v_o_cnt * #16
+t21 := &v_val_arr + t20
+t19 := t21
+ARG t19
+t18 := CALL get_max
+t22 := v_o_cnt * #4
+t23 := &v_res_arr + t22
+*t23 := t18
+t24 := v_o_cnt + #1
+v_o_cnt := t24
+GOTO label3
+LABEL label4 :
+v_copy_arr := &v_res_arr
+t25 := *v_copy_arr
+WRITE t25
+t28 := v_copy_arr + #4
+t27 := *t28
+WRITE t27
+RETURN #0

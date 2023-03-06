@@ -1,0 +1,61 @@
+
+FUNCTION main :
+v_cnt := #0
+v_sum := #0
+v_len := #10
+DEC v_points 120
+LABEL label0 :
+IF v_cnt >= v_len GOTO label1
+t0 := v_cnt
+t1 := v_cnt * #12
+t2 := &v_points + t1
+*t2 := t0
+t3 := v_cnt + v_cnt
+t4 := v_cnt * #12
+t5 := &v_points + t4
+t6 := t5 + #4
+*t6 := t3
+t7 := v_cnt * v_cnt
+t8 := v_cnt * #12
+t9 := &v_points + t8
+t10 := t9 + #8
+*t10 := t7
+t11 := v_cnt + #1
+v_cnt := t11
+GOTO label0
+LABEL label1 :
+v_cnt := #0
+LABEL label2 :
+IF v_cnt >= v_len GOTO label3
+IF v_cnt >= #5 GOTO label4
+t15 := v_cnt * #12
+t16 := &v_points + t15
+t17 := t16 + #4
+t14 := *t17
+t13 := v_sum + t14
+t19 := v_cnt * #12
+t20 := &v_points + t19
+t21 := t20 + #8
+t18 := *t21
+t12 := t13 + t18
+v_sum := t12
+GOTO label5
+LABEL label4 :
+t25 := v_cnt * #12
+t26 := &v_points + t25
+t24 := *t26
+t23 := v_sum + t24
+t28 := v_cnt * #12
+t29 := &v_points + t28
+t30 := t29 + #4
+t27 := *t30
+t22 := t23 + t27
+v_sum := t22
+LABEL label5 :
+t31 := v_cnt + #1
+v_cnt := t31
+GOTO label2
+LABEL label3 :
+WRITE v_sum
+t32 := #0
+RETURN #0

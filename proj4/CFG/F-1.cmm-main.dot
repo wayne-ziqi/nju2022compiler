@@ -1,0 +1,39 @@
+digraph G {
+	node [shape=box,color=".3 .2 1.0",style=filled];
+	"B0" [label="B0
+ENTRY"]
+	"B6" [label="B6
+WRITE v_i 
+v_count := v_count + #1"]
+	"B3" [label="B3
+LABEL label9 : 
+IF v_i >= #500 GOTO label10"]
+	"B4" [label="B4
+ARG v_i 
+t18 := CALL isNarcissistic"]
+	"B1" [label="B1
+Exit"]
+	"B5" [label="B5
+IF t18 != #1 GOTO label11"]
+	"B2" [label="B2
+v_count := #0 
+v_i := #300"]
+	"B8" [label="B8
+LABEL label10 : 
+WRITE v_count 
+RETURN #0"]
+	"B7" [label="B7
+LABEL label11 : 
+v_i := v_i + #1 
+GOTO label9"]
+	B0 -> B2 [label="FALL"]
+	B6 -> B7 [label="FALL"]
+	B3 -> B8 [label="IF_TRUE"]
+	B3 -> B4 [label="IF_FALSE"]
+	B4 -> B5 [label="FALL"]
+	B5 -> B7 [label="IF_TRUE"]
+	B5 -> B6 [label="IF_FALSE"]
+	B2 -> B3 [label="FALL"]
+	B8 -> B1 [label="FALL"]
+	B7 -> B3 [label="GOTO"]
+}

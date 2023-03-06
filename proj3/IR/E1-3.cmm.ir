@@ -1,0 +1,137 @@
+
+FUNCTION dot :
+PARAM v_dp1
+PARAM v_dp2
+t4 := v_dp1
+t3 := *t4
+t6 := v_dp2
+t5 := *t6
+t2 := t3 * t5
+t9 := v_dp1 + #4
+t8 := *t9
+t11 := v_dp2 + #4
+t10 := *t11
+t7 := t8 * t10
+t1 := t2 + t7
+t14 := v_dp1 + #8
+t13 := *t14
+t16 := v_dp2 + #8
+t15 := *t16
+t12 := t13 * t15
+t0 := t1 + t12
+RETURN t0
+
+FUNCTION sqrt :
+PARAM v_si
+v_s_cnt := #0
+LABEL label0 :
+IF v_s_cnt > v_si GOTO label1
+v_lower := v_s_cnt * v_s_cnt
+t17 := v_s_cnt + #1
+t18 := v_s_cnt + #1
+v_upper := t17 * t18
+t19 := #0
+IF v_si < v_lower GOTO label3
+t19 := #1
+LABEL label3 :
+IF t19 == #0 GOTO label2
+t20 := #0
+IF v_si >= v_upper GOTO label4
+t20 := #1
+LABEL label4 :
+IF t20 == #0 GOTO label2
+RETURN v_s_cnt
+LABEL label2 :
+t21 := v_s_cnt + #1
+v_s_cnt := t21
+GOTO label0
+LABEL label1 :
+t23 := #1
+t22 := #0 - t23
+RETURN t22
+
+FUNCTION dist :
+PARAM v_dip1
+PARAM v_dip2
+ARG v_dip2
+ARG v_dip1
+t25 := CALL dot
+ARG t25
+t24 := CALL sqrt
+RETURN t24
+
+FUNCTION main :
+DEC v_bodies 120
+v_o_cnt := #0
+v_i_cnt := #0
+LABEL label5 :
+IF v_o_cnt >= #3 GOTO label6
+v_i_cnt := #0
+LABEL label7 :
+IF v_i_cnt >= #3 GOTO label8
+t27 := v_i_cnt * v_o_cnt
+t26 := t27 + v_i_cnt
+t28 := v_o_cnt * #40
+t29 := &v_bodies + t28
+t30 := t29 + #4
+t31 := v_i_cnt * #12
+t32 := t30 + t31
+*t32 := t26
+t35 := v_i_cnt * v_o_cnt
+t34 := t35 * v_o_cnt
+t33 := t34 + v_i_cnt
+t36 := v_o_cnt * #40
+t37 := &v_bodies + t36
+t38 := t37 + #4
+t39 := v_i_cnt * #12
+t40 := t38 + t39
+t41 := t40 + #4
+*t41 := t33
+t45 := v_i_cnt * v_i_cnt
+t44 := t45 * v_o_cnt
+t43 := t44 * v_o_cnt
+t42 := t43 + v_i_cnt
+t46 := v_o_cnt * #40
+t47 := &v_bodies + t46
+t48 := t47 + #4
+t49 := v_i_cnt * #12
+t50 := t48 + t49
+t51 := t50 + #8
+*t51 := t42
+t52 := v_i_cnt + #1
+v_i_cnt := t52
+GOTO label7
+LABEL label8 :
+t61 := v_o_cnt * #40
+t62 := &v_bodies + t61
+t63 := t62 + #4
+t64 := #2 * #12
+t65 := t63 + t64
+t60 := t65
+t55 := v_o_cnt * #40
+t56 := &v_bodies + t55
+t57 := t56 + #4
+t58 := #1 * #12
+t59 := t57 + t58
+t54 := t59
+ARG t60
+ARG t54
+t53 := CALL dist
+t66 := v_o_cnt * #40
+t67 := &v_bodies + t66
+*t67 := t53
+t68 := v_o_cnt + #1
+v_o_cnt := t68
+GOTO label5
+LABEL label6 :
+t73 := &v_bodies
+t72 := *t73
+t75 := &v_bodies + #40
+t74 := *t75
+t71 := t72 + t74
+t77 := &v_bodies + #80
+t76 := *t77
+t70 := t71 + t76
+WRITE t70
+t69 := #0
+RETURN #0
